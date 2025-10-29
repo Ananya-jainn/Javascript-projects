@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> `it is essential for responsive web design , name="viewport" defines
+        that im giving instructions for the visible area of web . "width=device-width" This sets the width of the viewport to be exactly the width of the device's screen.
+         Crucially, this prevents mobile browsers from defaulting to a larger desktop screen size (e.g., 980px) and then squishing the page down.
+          "initial-scale=1.0" -This sets the initial zoom level when the page is first loaded.
+         Setting it to 1.0 establishes a 1:1 relationship between the device's screen resolution and the CSS pixels, ensuring no default zooming is`
+        <title>
+            Weather App
+        </title>
+        <link rel="stylesheet" href="cssfilee/style.css">
+    </head>
+    <body >
+        <div class="card">
+            <div class="search">
+                <input type="text" placeholder="enter city name" spellcheck="false">
+                <button>
+                    <img src="images/search.png">
+                </button>
+            </div>
+            <div class="error">
+                <P>
+                    Invalid City name !!!
+                </P>
+            </div>
+            <div class="weather">
+                <img src="images/clear.png" class="weather-icon">
+                <h1 class="temp"> // h1 is main title
+                    21°C
+                </h1>
+                <h2 class="city"> // h2 is second title
+                    Delhi
+                </h2>
+                <div class="details">
+                    <div class="col">
+                        <img src="images/humidity.png" >
+                        <div>
+                            <p class="humidity">50%</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                     <div class="col">
+                        <img src="images/wind.png" >
+                        <div>
+                            <p class="wind">15km/hr</p>
+                            <p>Wind speed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        //Java script starts from here
+    <script>
+        const apiKey="b753f49d88052c7a04a8806113f55fc7";  // variable is defined here as apikey and apiurl
+        const apiURL="https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
+        const searchBox = document.querySelector(".search input"); // it fetches the doc
+        const searchBtn = document.querySelector(".search button");
+        const weatherIcon = document.querySelector(".weather-icon");
+        async function checkweather(city) //asynchronous function is defined taking parameter as city
+         {
+            const response = await fetch (apiURL + city +`&appid=${apiKey}`);
+
+            if(response.status==404){
+                document.querySelector(".error").style.display = "block";
+                 document.querySelector(".weather").style.display = "none";
+            }
+            else{
+                var data = await response.json(); // method call
+            
+            document.querySelector(".city").innerHTML= data.name; // its for real time work. accessing all the html data from the network and naming it
+            document.querySelector(".temp").innerHTML= Math.round(data.main.temp) +"°C";
+            document.querySelector(".humidity").innerHTML= data.main.humidity +"%";
+            document.querySelector(".wind").innerHTML= data.wind.speed + "km/hr";
+
+            if (data.weather[0].main=="Clouds"){
+                weatherIcon.src = "images/clouds.png";
+            }
+            else if (data.weather[0].main=="Clear"){
+                weatherIcon.src = "images/clear.png";
+            }
+            else if (data.weather[0].main=="Rain"){
+                weatherIcon.src = "images/rain.png";
+            }
+            else if (data.weather[0].main=="Drizzle"){
+                weatherIcon.src = "images/drizzle.png";
+            }
+            else if (data.weather[0].main=="Mist"){
+                weatherIcon.src = "images/mist.png";
+            }
+            document.querySelector(".weather").style.display="block";
+            document.querySelector(".error").style.display = "none";
+            }
+            
+        }
+        searchBtn.addEventListener("click",()=>{
+         checkweather(searchBox.value);
+    }) /*.addEventListener: A method that tells the element to "listen" for a specific event.
+    "click": The event it's listening for. When the user physically clicks the mouse on the button, this event is triggered.
+    ()=>{ ... }: This is an **anonymous arrow function** (a simple, unnamed function) that contains the instructions to be executed *when* the click happens.*/
+    </script>
+    </body>
+</html>
