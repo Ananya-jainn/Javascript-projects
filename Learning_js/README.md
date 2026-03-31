@@ -1,0 +1,1 @@
+basically learning JS  from scratch and keeping notes for future saves
