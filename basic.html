@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM learning</title>
+    <style>
+        .bg-black{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-black">
+</body>
+<script>
+    const div = document.createElement('div')
+    console.log(div);
+    div.className = "main"
+    div.id = Math.round(Math.random()* 10+1)
+    div.setAttribute("title","generated title")
+    div.style.backgroundColor="lavender"
+    div.style.padding = "15px"
+    div.style.color="black"
+    //div.innerText= "ananya and bts"
+    const addText = document.createTextNode("ananya and bts")
+    div.appendChild(addText) //both does the same work
+
+    document.body.appendChild(div)
+</script>
+</html>
