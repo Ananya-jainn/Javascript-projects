@@ -157,7 +157,7 @@ function endGame() {
 
 ```
 
-PEOJECT 5
+PEOJECT 5 (keyboard table)
 ```javascript
 const insert = document.getElementById('insert');
 
