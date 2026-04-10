@@ -39,9 +39,18 @@ class UserN{
         console.log(`usernames : ${this.usernames}`);
     }
 
-    createId(){
+    static createId(){  //restricts accessiblility
         return `123`
     }
 }
 const ananya = new UserN("ananya")
-console.log(ananya.createId())
+// console.log(ananya.createId())
+
+class teaches extends UserN{
+    constructor(usernames,emails){
+        super(usernames)
+        this.emails = emails
+    }
+}
+const iphone = new teaches("iphone","@yahoo.co.in")
+console.log(iphone.createId()); // kuch bhi access nahi karne de raha 'static'
