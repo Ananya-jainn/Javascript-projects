@@ -16,7 +16,9 @@ createuser.prototype.increment = function(){
    this.score++  //this matlab jiss
 }
 createuser.prototype.printMe = function(){
-    console.log(`score os ${this.score}`);
+    console.log(`price is  ${this.score}`);
 }
 const mee = new createuser("mee",100)
 const us =  new createuser("us",109)
+
+mee.printMe()
