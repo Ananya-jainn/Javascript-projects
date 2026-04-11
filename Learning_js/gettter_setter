@@ -57,3 +57,7 @@ const user = {
          this._email = value
     }
 }
+
+const tea = Object.create(user)
+
+console.log(tea.email);
