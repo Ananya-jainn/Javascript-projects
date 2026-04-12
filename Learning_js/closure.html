@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: #212121;
+color: aliceblue;">
+    <button id="green">green</button>
+    <button id="orange">orange</button>
+</body>
+<script>
+// function init() {
+//     let name = "Mozilla"; 
+//     function displayName() {
+        
+//         console.log(name); 
+//     }
+//     displayName();
+    
+// }
+// init();
+
+//LEXICAL SCOPING
+function outer(){
+    let usrname = "ananya"
+    //console.log(secret); //ERROR!! parent bhi child variables ka access nhi le sakta
+    function inner(){
+        let secret = '567'
+        console.log("inner",usrname);  //lexical scoping
+    }
+    function inner2(){
+        console.log("innertwo",usrname);
+        //console.log(secret);  // error cause sirf parent function se hi access kar sakte hai sibling se nhi kar sakte
+    }
+    inner()
+    inner2()
+}
+outer()
+//console.log("too outer",usrname);// ERROR!
+
+
+//CLOSURE
+
+    function makeFunc() {
+        const name = "Mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        return displayName;  // idhar sirf display nhi jayegi poora outer function bhi jayega cause of lexical scoping . poori memory share hogi sirf executional context nhi
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+</script>
+<script>
+    // document.getElementById("orange").onclick = function() {
+    //     document.body.style.backgroundColor = `orange`;
+    // }
+    // document.getElementById("green").onclick = function() {
+    //     document.body.style.backgroundColor = `green`;
+    // }
+
+     function clickHandler(color){
+    //     document.body.style.backgroundColor = `${color}`;
+            return function(){
+                document.body.style.backgroundColor = `${color}`;
+            }
+    }
+    document.getElementById('orange').onclick = clickHandler("orange")
+    document.getElementById('green').onclick = clickHandler("green")
+    
+</script>
+</html>
