@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list </title>
+    <link rel="stylesheet" href="to_do.css">
+</head>
+<body>
+   <h1 class="heading">To-Do List</h1>
+
+    <div class="basicbg">
+
+    <!-- Input box -->
+    <div class="input-box">
+        <input type="text" id="taskInput" placeholder="Enter a task...">
+        <button onclick="addTask()">Add</button>
+        <button onclick="deleteChecked()">Delete Completed</button>
+    </div>
+
+    <!-- Task list -->
+    <div id="taskList"></div>
+
+    </div>
+    <script src="to_do.js"> 
+    </script>
+</body>
+</html>

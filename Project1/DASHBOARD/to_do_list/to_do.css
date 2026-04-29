@@ -1,0 +1,55 @@
+body {
+     background: linear-gradient(190deg, #e086d2, #7d4477);
+}
+
+.basicbg {
+    background-color: rgb(234, 224, 233);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 800px;
+    height: 500px;
+    border-radius: 50px;
+    padding: 30px 10px;
+    border: 2px solid black;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    display: flex;
+    padding-left: 50px;
+    margin-left: 380px;
+}
+
+/* Heading */
+.heading {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 50px;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+}
+
+.custom-check {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* hide default checkbox */
+.custom-check input {
+    display: none;
+}
+
+/* fake checkbox */
+.checkmark {
+    height: 18px;
+    width: 18px;
+    border: 2px solid black;
+    margin-right: 10px;
+}
+
+/* when checked */
+.custom-check input:checked + .checkmark {
+    background-color: black;
+}
+.task {
+    display: block;
+    margin: 10px 0;
+    font-size: 18px;
+}
